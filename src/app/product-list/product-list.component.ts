@@ -17,18 +17,18 @@ import { spec } from 'node:test/reporters';
 })
 export class ProductListComponent implements OnInit, OnDestroy {
   popular: Product[] = [
-    { Id: 1, name: 'Product 1', description: 'Description 1', imageUrl: 'https://via.placeholder.com/150', price: 10, quantity: 0, showQuantityControl: false },
-    { Id: 2, name: 'Product 2', description: 'Description 2', imageUrl: 'https://via.placeholder.com/150', price: 20, quantity: 0, showQuantityControl: false },
+    { Id: 1, name: 'Product 1', description: 'Description 1', imageUrl: 'burger.jpg', price: 10, quantity: 0, showQuantityControl: false },
+    { Id: 2, name: 'Product 2', description: 'Description 2', imageUrl: 'burger.jpg', price: 20, quantity: 0, showQuantityControl: false },
   ];
 
   special: Product[] = [
-    { Id: 3, name: 'Special Product A', description: 'Special offer!', imageUrl: 'https://via.placeholder.com/150', price: 15, quantity: 0, showQuantityControl: false },
-    { Id: 4, name: 'Bundle Deal C', description: 'Get more for less', imageUrl: 'https://via.placeholder.com/150', price: 25, quantity: 0, showQuantityControl: false },
+    { Id: 3, name: 'Special Product A', description: 'Special offer!', imageUrl: 'burger.jpg', price: 15, quantity: 0, showQuantityControl: false },
+    { Id: 4, name: 'Bundle Deal C', description: 'Get more for less', imageUrl: 'burger.jpg', price: 25, quantity: 0, showQuantityControl: false },
   ];
 
   newArrival: Product[] = [
-    { Id: 5, name: 'New Arrival X', description: 'Latest product', imageUrl: 'https://via.placeholder.com/150', price: 30, quantity: 0, showQuantityControl: false },
-    { Id: 6, name: 'Fresh Stock Z', description: 'Just arrived', imageUrl: 'https://via.placeholder.com/150', price: 35, quantity: 0, showQuantityControl: false },
+    { Id: 5, name: 'New Arrival X', description: 'Latest product', imageUrl: 'burger.jpg', price: 30, quantity: 0, showQuantityControl: false },
+    { Id: 6, name: 'Fresh Stock Z', description: 'Just arrived', imageUrl: 'burger.jpg', price: 35, quantity: 0, showQuantityControl: false },
   ];
 
   searchTerm: string = '';
