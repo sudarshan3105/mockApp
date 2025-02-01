@@ -16,4 +16,8 @@ export class ProductDescComponent {
   ngOnInit(){
     console.log(this.data);
   }
+
+  closeMenu(){
+    this.dialogRef.close();
+  }
 }
