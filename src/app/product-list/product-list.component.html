@@ -1,0 +1,103 @@
+<div class="relative mt-8 mx-auto w-full md:w-1/2 lg:w-9/12 xl:w-9/12 bg-white">
+  <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+    <svg class="w-5 h-5 text-gray-500" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
+      xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd"
+        d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+        clip-rule="evenodd"></path>
+    </svg>
+  </div>
+  <input type="text" id="search"
+    class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+    placeholder="Search..." required [(ngModel)]="searchTerm">
+</div>
+
+<div *ngIf="filteredPopular.length" class="mt-3 ml-9">Popular Item</div>
+
+<div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-12 mt-7 m-9">
+  <div *ngFor="let product of filteredPopular; trackBy: trackById"
+    class="bg-white border-4 border-yellow-400 rounded-lg p-4 shadow-md transition duration-300 hover:scale-105">
+    <img [src]="product.imageUrl || 'assets/placeholder.png'" alt="{{ product.name }}"
+      class="w-full h-24 object-cover rounded-t-lg mb-4" (click)="openProductDetails(product)">
+    <span class="text-base mb-2">{{ product.name }}</span>
+    <p class="text-gray-700 mb-4">{{ product.description }}</p>
+    <p class="text-lg font-semibold">${{ product.price }}</p>
+
+    <div *ngIf="!cartProducts[product.Id]" class="flex justify-center mt-2">
+      <button (click)="addToCart(product)" class="bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-2 px-4 rounded transition duration-300">
+        Add to Cart
+      </button>
+    </div>
+
+    <div *ngIf="cartProducts[product.Id]" class="flex items-center justify-center mt-2">
+      <button (click)="decrementQuantity(product)" [disabled]="cartProducts[product.Id] <= 1" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l transition duration-300">
+        -
+      </button>
+      <span class="px-4 border border-gray-300">{{ cartProducts[product.Id] }}</span>
+      <button (click)="addToCart(product)" class="bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-2 px-4 rounded-r transition duration-300">
+        +
+      </button>
+    </div>
+
+  </div>
+</div>
+
+<div *ngIf="filteredSpecial.length" class="mt-3 ml-9">Special Offers</div>
+
+<div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-12 mt-7 m-9">
+  <div *ngFor="let product of filteredSpecial; trackBy: trackById"
+    class="bg-white border-4 border-yellow-400 rounded-lg p-4 shadow-md transition duration-300 hover:scale-105">
+    <img [src]="product.imageUrl || 'assets/placeholder.png'" alt="{{ product.name }}"
+      class="w-full h-24 object-cover rounded-t-lg mb-4" (click)="openProductDetails(product)">
+    <span class="text-base mb-2">{{ product.name }}</span>
+    <p class="text-gray-700 mb-4">{{ product.description }}</p>
+    <p class="text-lg font-semibold">${{ product.price }}</p>
+
+    <div *ngIf="!cartProducts[product.Id]" class="flex justify-center mt-2">
+      <button (click)="addToCart(product)" class="bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-2 px-4 rounded transition duration-300">
+        Add to Cart
+      </button>
+    </div>
+
+    <div *ngIf="cartProducts[product.Id]" class="flex items-center justify-center mt-2">
+      <button (click)="decrementQuantity(product)" [disabled]="cartProducts[product.Id] <= 1" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l transition duration-300">
+        -
+      </button>
+      <span class="px-4 border border-gray-300">{{ cartProducts[product.Id] }}</span>
+      <button (click)="addToCart(product)" class="bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-2 px-4 rounded-r transition duration-300">
+        +
+      </button>
+    </div>
+
+  </div>
+</div>
+
+<div *ngIf="filteredNewArrival.length" class="mt-3 ml-9">New Arrival Item</div>
+
+<div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-12 mt-7 m-9 pb-40">
+  <div *ngFor="let product of filteredNewArrival; trackBy: trackById"
+    class="bg-white border-4 border-yellow-400 rounded-lg p-4 shadow-md transition duration-300 hover:scale-105">
+    <img [src]="product.imageUrl || 'assets/placeholder.png'" alt="{{ product.name }}"
+      class="w-full h-24 object-cover rounded-t-lg mb-4" (click)="openProductDetails(product)">
+    <span class="text-base mb-2">{{ product.name }}</span>
+    <p class="text-gray-700 mb-4">{{ product.description }}</p>
+    <p class="text-lg font-semibold">${{ product.price }}</p>
+
+    <div *ngIf="!cartProducts[product.Id]" class="flex justify-center mt-2">
+      <button (click)="addToCart(product)" class="bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-2 px-4 rounded transition duration-300">
+        Add to Cart
+      </button>
+    </div>
+
+    <div *ngIf="cartProducts[product.Id]" class="flex items-center justify-center mt-2">
+      <button (click)="decrementQuantity(product)" [disabled]="cartProducts[product.Id] <= 1" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l transition duration-300">
+        -
+      </button>
+      <span class="px-4 border border-gray-300">{{ cartProducts[product.Id] }}</span>
+      <button (click)="addToCart(product)" class="bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-2 px-4 rounded-r transition duration-300">
+        +
+      </button>
+    </div>
+
+  </div>
+</div>

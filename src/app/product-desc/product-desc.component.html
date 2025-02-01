@@ -1,0 +1,10 @@
+<div class="product-details-dialog">  <h2 mat-dialog-title class="text-2xl font-bold">{{ data.name }}</h2>
+    <div mat-dialog-content class="p-4">
+      <img [src]="data.imageUrl || 'assets/placeholder.png'" alt="{{ data.name }}" class="w-full h-48 object-cover mb-4 rounded-lg">
+      <p class="text-gray-700">{{ data.description }}</p>
+      <p class="font-semibold text-lg mt-2">${{ data.price }}</p>
+    </div>
+    <div mat-dialog-actions class="p-4 flex justify-end">  <button mat-button mat-dialog-close class="mr-2 px-4 py-2 rounded-lg bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium">Cancel</button>
+      <button mat-button [mat-dialog-close]="'added'" class="bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-2 px-6 rounded-lg">Add to Cart</button>
+    </div>
+  </div>
