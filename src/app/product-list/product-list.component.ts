@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { CartService } from '../cart/cart.service';
 import { ProductDescComponent } from '../product-desc/product-desc.component';
 import { Product } from '../product.interface';
+import { spec } from 'node:test/reporters';
 
 @Component({
   selector: 'app-product-list',
@@ -33,6 +34,8 @@ export class ProductListComponent implements OnInit, OnDestroy {
   searchTerm: string = '';
   cartProducts: { [id: number]: number } = {};
   private cartUpdatesSubscription: Subscription | undefined;
+  cartSubscription: Subscription | undefined;
+  cartItems: Product[] | undefined;
 
   get filteredPopular(): Product[] {
     const term = this.searchTerm.toLowerCase();
@@ -70,6 +73,17 @@ export class ProductListComponent implements OnInit, OnDestroy {
       updatedCartItems.forEach(item => {
         this.cartProducts[item.Id] = item.quantity;
       });
+    });
+    this.cartSubscription = this.cartService.cartItems$.subscribe(items => {
+      this.cartItems = items;
+      let pro = [...this.popular,...this.special,...this.newArrival];
+      pro.forEach((ele)=>{
+        this.cartItems?.forEach((a)=>{
+          if(ele.Id == a.Id){
+            ele.quantity = a.quantity;
+          }
+        })
+      })
     });
   }
 
