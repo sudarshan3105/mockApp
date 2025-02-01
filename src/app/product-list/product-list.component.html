@@ -30,7 +30,7 @@
     </div>
 
     <div *ngIf="cartProducts[product.Id] || product.quantity > 0" class="flex items-center justify-center mt-2">
-      <button (click)="decrementQuantity(product)" [disabled]="cartProducts[product.Id] <= 1" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l transition duration-300">
+      <button (click)="decrementQuantity(product)" [disabled]="cartProducts[product.Id] <= 0" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l transition duration-300">
         -
       </button>
       <span class="px-4 border border-gray-300">{{ cartProducts[product.Id] || product.quantity }}</span>
@@ -60,7 +60,7 @@
     </div>
 
     <div *ngIf="cartProducts[product.Id] || product.quantity > 0" class="flex items-center justify-center mt-2">
-      <button (click)="decrementQuantity(product)" [disabled]="cartProducts[product.Id] <= 1" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l transition duration-300">
+      <button (click)="decrementQuantity(product)" [disabled]="cartProducts[product.Id] <= 0" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l transition duration-300">
         -
       </button>
       <span class="px-4 border border-gray-300">{{ cartProducts[product.Id] || product.quantity }}</span>
@@ -90,7 +90,7 @@
     </div>
 
     <div *ngIf="cartProducts[product.Id] || product.quantity > 0" class="flex items-center justify-center mt-2">
-      <button (click)="decrementQuantity(product)" [disabled]="cartProducts[product.Id] <= 1" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l transition duration-300">
+      <button (click)="decrementQuantity(product)" [disabled]="cartProducts[product.Id] <= 0" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l transition duration-300">
         -
       </button>
       <span class="px-4 border border-gray-300">{{ cartProducts[product.Id] || product.quantity }}</span>
